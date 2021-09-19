@@ -7,6 +7,15 @@
   margin-left: auto;
   margin-right: auto;
 }
+#new {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  width: 280px;
+}
 .book {
   display: flex;
   border-style: solid;
@@ -15,13 +24,58 @@
   border-radius: 3px;
 }
 .info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 25%;
   height: 100%;
   border-style: solid;
   border-color: black;
-  border-width: 1px;
+  border-width: 2px;
   border-radius: 1px;
 }
 .info p {
-  margin-left: 5px;
+  font-size: 20px;
+}
+.form-popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-left: -150px;
+  margin-top: -251px;
+  border: 3px solid #999;
+  z-index: 9;
+}
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+.form-container input[type=text], .form-container input[type=number] {
+  width: 90%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+.form-container input[type=text]:focus, .form-container input[type=number]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+.form-container .btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+.form-container .cancel {
+  background-color: red;
+}
+.form-container #new:hover, .open-button:hover {
+  opacity: 1;
 }

@@ -5,10 +5,10 @@ const libraryDiv = document.querySelector("#library");
 const submitBtn = document.querySelector('#submit');
 
 function Book(title, author, pages, read) {
-  this.Title = title;
-  this.Author = author;
-  this.Pages = pages;
-  this.Read = read;
+  this.title = title;
+  this.author = author;
+  this.pages = pages;
+  this.read = read;
 }
 
 function addBookToLibrary(book) {
@@ -27,15 +27,15 @@ function displayLibrary(library) {
       let div = document.createElement("div");
       div.classList.add("info");
       let divPara = document.createElement("p");
-      if(key === 'Read') {
+      if(key === 'read') {
         if(value === true) {
           divPara.textContent = "Read";
         } else {
           divPara.textContent = "Not Read";
         }
-      } else if(key === 'Title') {
+      } else if(key === 'title') {
         divPara.textContent = `${value}`;
-      }else if(key === 'Pages') {
+      }else if(key === 'pages') {
         if(value > 1) {
           divPara.textContent = `${value} pages`;
         } else if(value == 1) {
@@ -43,12 +43,24 @@ function displayLibrary(library) {
         } else {
           divPara.textContent = "Negative?";
         }
-      } else {
-        divPara.textContent = `${key}: ${value}`;
+      } else if(key === "author") {
+        divPara.textContent = `Author: ${value}`;
       }
       div.appendChild(divPara);
       newBook.appendChild(div);
     }
+    let buttonDiv = document.createElement('div');
+    buttonDiv.classList.add('info');
+
+    let button = document.createElement('button');
+    button.classList.add('btn');
+    button.classList.add('delete-btn');
+    button.classList.add('cancel');
+    button.setAttribute('data-title', library[i].title);
+    button.textContent = 'Delete';
+    buttonDiv.appendChild(button);
+
+    newBook.appendChild(buttonDiv);
 
     libraryDiv.appendChild(newBook);
   }
@@ -69,6 +81,30 @@ function newBook() {
     let book = new Book(title, author, pages, read);
     addBookToLibrary(book);
     closeForm()
+
+    let buttons = document.querySelectorAll('.delete-btn');
+    if(buttons.length !== 0) {
+      buttons.forEach(button => {
+        button.removeEventListener('click', removeBooks);
+      });
+      buttons.forEach(button => {
+        button.addEventListener('click', removeBooks);
+      });
+    }
+  }
+}
+
+function removeBooks(e) {
+  myLibrary = myLibrary.filter(book => book.title !== e.srcElement.dataset.title);
+  displayLibrary(myLibrary);
+  let buttons = document.querySelectorAll('.delete-btn');
+  if(buttons.length !== 0) {
+    buttons.forEach(button => {
+      button.removeEventListener('click', removeBooks);
+    });
+    buttons.forEach(button => {
+      button.addEventListener('click', removeBooks);
+    });
   }
 }
 

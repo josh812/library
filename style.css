@@ -1,9 +1,5 @@
 #library {
   display: grid;
-  border-style: solid;
-  border-color: black;
-  border-width: 1px;
-  border-radius: 2px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -18,10 +14,10 @@
 }
 .book {
   display: flex;
-  border-style: solid;
+  /*border-style: solid;
   border-color: black;
   border-width: 1px;
-  border-radius: 3px;
+  border-radius: 0px;*/
 }
 .info {
   display: flex;
@@ -63,7 +59,7 @@
   background-color: #ddd;
   outline: none;
 }
-.form-container .btn {
+.btn {
   background-color: #04AA6D;
   color: white;
   padding: 16px 20px;
@@ -73,9 +69,12 @@
   margin-bottom:10px;
   opacity: 0.8;
 }
-.form-container .cancel {
+.cancel {
   background-color: red;
 }
 .form-container #new:hover, .open-button:hover {
+  opacity: 1;
+}
+.btn:hover {
   opacity: 1;
 }
